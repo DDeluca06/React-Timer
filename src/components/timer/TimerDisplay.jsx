@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'; // Importing PropTypes to validate the props
+import PropTypes from 'prop-types';
 
 const Timer = ({ timeLeft }) => {
   // Formatting the time for displaying seconds to minutes
@@ -8,16 +8,13 @@ const Timer = ({ timeLeft }) => {
     return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  // Displaying the time left
   return (
     <div className="display">
-      <h1>Focus Session</h1>
       <h1>{formatTime(timeLeft)}</h1>
     </div>
   );
 };
 
-// Validating the props
 Timer.propTypes = {
   timeLeft: PropTypes.number.isRequired,
 };
