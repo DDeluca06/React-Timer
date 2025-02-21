@@ -51,7 +51,7 @@ h1 {
 }
 
 /* Button Styling */
-.timer-buttons {
+.controls{
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -131,8 +131,4 @@ button.reset {
 
 .card {
   padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
