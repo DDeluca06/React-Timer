@@ -37,6 +37,7 @@ const Button = ({
 };
 
 // Prop definitions, these are here to ensure that the props are passed in correctly
+// This is a good practice to ensure that the component is used correctly and we drop any unexpected datatypes.
 Button.propTypes = {
     children: PropTypes.node.isRequired,
     variant: PropTypes.oneOf(['primary', 'secondary', 'danger']),

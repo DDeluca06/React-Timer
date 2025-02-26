@@ -16,6 +16,7 @@ const Timer = ({ timeLeft }) => {
 };
 
 // Prop definitions, these are here to ensure that the props are passed in correctly
+// This is a good practice to ensure that the component is used correctly and we drop any unexpected datatypes.
 Timer.propTypes = {
   timeLeft: PropTypes.number.isRequired,
 };
