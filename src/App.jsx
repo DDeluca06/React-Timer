@@ -39,6 +39,7 @@ function App() {
     }, 1000);
   }, [intervalId]);
 
+  // Reset timer function
   const resetTimer = () => {
     stopTimer();
     setTimeLeft(1500);

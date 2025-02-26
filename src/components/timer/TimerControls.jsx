@@ -27,7 +27,8 @@ const TimerButtons = ({ isRunning, startTimer, stopTimer, resetTimer, isDebounce
   );
 };
 
-// Prop definitions
+// Prop definitions, these are here to ensure that the props are passed in correctly
+// This is a good practice to ensure that the component is used correctly and we drop any unexpected datatypes.
 TimerButtons.propTypes = {
   isRunning: PropTypes.bool.isRequired,
   timeLeft: PropTypes.number.isRequired,
