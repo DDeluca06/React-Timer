@@ -3,6 +3,8 @@ This is a simple timer application built with React. It allows you to start a ti
 
 ## Features
 - Start a 25 minute timer.
+- Reset & Stop/Pause timer.
+- Progress Bar.
 
 ## Technologies Used
 - React
@@ -16,7 +18,6 @@ This is a simple timer application built with React. It allows you to start a ti
 
 ## Structure
 ```
-Timer
 ├─ eslint.config.js
 ├─ index.html
 ├─ package-lock.json
@@ -34,14 +35,16 @@ Timer
 │  │  ├─ context
 │  │  │  └─ TimerContext.jsx
 │  │  ├─ hooks
+│  │  │  └─ useTimer.jsx
 │  │  ├─ timer
 │  │  │  ├─ TimerControls.jsx
 │  │  │  └─ TimerDisplay.jsx
-│  │  └─ ui
-│  │     └─ Progress.jsx
+│  │  ├─ ui
+│  │  │  └─ Progress.jsx
+│  │  └─ utils
+│  │     └─ Time.jsx
 │  ├─ index.css
 │  └─ main.jsx
 ├─ tailwind.config.js
 └─ vite.config.js
-
 ```
