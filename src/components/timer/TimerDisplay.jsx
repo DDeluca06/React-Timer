@@ -1,12 +1,8 @@
-import PropTypes from 'prop-types';
+import { useTimer } from '../hooks/useTimer';
+import { formatTime } from '../utils/time';
 
-const Timer = ({ timeLeft }) => {
-  // Formatting the time for displaying seconds to minutes
-  const formatTime = (totalSeconds) => {
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
-    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-  };
+const TimerDisplay = () => {
+  const { timeLeft } = useTimer();
 
   return (
     <div className="display">
@@ -15,10 +11,4 @@ const Timer = ({ timeLeft }) => {
   );
 };
 
-// Prop definitions, these are here to ensure that the props are passed in correctly
-// This is a good practice to ensure that the component is used correctly and we drop any unexpected datatypes.
-Timer.propTypes = {
-  timeLeft: PropTypes.number.isRequired,
-};
-
-export default Timer;
+export default TimerDisplay;

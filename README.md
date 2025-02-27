@@ -16,26 +16,32 @@ This is a simple timer application built with React. It allows you to start a ti
 
 ## Structure
 ```
-├─ .gitignore
+Timer
+├─ eslint.config.js
 ├─ index.html
 ├─ package-lock.json
 ├─ package.json
-├─ public/
+├─ postcss.config.js
+├─ public
 │  └─ vite.svg
 ├─ README.md
-├─ src/
+├─ src
 │  ├─ App.css
 │  ├─ app.jsx
-│  ├─ components/
-│  │  ├─ common/
+│  ├─ components
+│  │  ├─ common
 │  │  │  └─ Button.jsx
-│  │  └─ timer/
-│  │     ├─ TimerControls.jsx
-│  │     └─ TimerDisplay.jsx
+│  │  ├─ context
+│  │  │  └─ TimerContext.jsx
+│  │  ├─ hooks
+│  │  ├─ timer
+│  │  │  ├─ TimerControls.jsx
+│  │  │  └─ TimerDisplay.jsx
+│  │  └─ ui
+│  │     └─ Progress.jsx
 │  ├─ index.css
 │  └─ main.jsx
-├─ eslint.config.js
 ├─ tailwind.config.js
-├─ postcss.config.js
 └─ vite.config.js
+
 ```
