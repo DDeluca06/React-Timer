@@ -132,3 +132,21 @@ button.reset {
 .card {
   padding: 2em;
 }
+
+/* Number Drop Animation */
+/* Define keyframes */
+@keyframes drop {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Apply to the text element */
+.number-drop {
+  animation: drop 0.4s ease-in-out;
+}

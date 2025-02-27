@@ -1,5 +1,5 @@
 import './App.css';
-import Timer from './components/timer/TimerDisplay';
+import TimerDisplay from './components/timer/TimerDisplay';
 import TimerControls from './components/timer/TimerControls';
 import LinearDeterminate from './components/ui/Progress';
 import { TimerProvider } from './components/context/TimerContext.jsx';
@@ -9,7 +9,7 @@ function App() {
     <TimerProvider>
       <div className="app">
         <h1>Pomodoro Timer</h1>
-        <Timer />
+        <TimerDisplay />
         <TimerControls />
       </div>
       <div className="progress">
