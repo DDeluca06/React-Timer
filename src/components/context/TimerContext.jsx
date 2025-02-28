@@ -1,5 +1,8 @@
 import React, { createContext, useState, useCallback, useEffect } from 'react';
+import useSessions from '../../hooks/useSessions';
+import { toast } from 'react-toastify';
 
+// Create context
 export const TimerContext = createContext();
 
 export const TimerProvider = ({ children }) => {
@@ -9,6 +12,9 @@ export const TimerProvider = ({ children }) => {
   const [isDebounced, setIsDebounced] = useState(false); // Debounce state, prevents multiple clicks
   const [intervalId, setIntervalId] = useState(null);
 
+  // useSessions hook
+  const { sessions, streak, startSession, endSession } = useSessions();
+
   // Start timer function
   const startTimer = useCallback(() => {
     if (!isRunning && timeLeft > 0) {
@@ -17,13 +23,14 @@ export const TimerProvider = ({ children }) => {
         setTimeLeft((prevTime) => prevTime - 1);
       }, 1000);
       setIntervalId(newIntervalId);
-      // When button is clicked, debounce, disable button
+      startSession();
+      // When button is clicked, debounce, disable button for 1 second
       setIsDebounced(true);
       setTimeout(() => {
         setIsDebounced(false);
       }, 1000);
     }
-  }, [isRunning, timeLeft]);
+  }, [isRunning, timeLeft, startSession]);
 
   // Stop timer function
   const stopTimer = useCallback(() => {
@@ -58,13 +65,15 @@ export const TimerProvider = ({ children }) => {
   useEffect(() => {
     if (timeLeft === 0) {
       stopTimer();
+      endSession(); // End the session
+      toast.success('Session completed! 🔥'); // Send a toast message
     }
     return () => {
       if (intervalId && timeLeft === 0) {
         clearInterval(intervalId);
       }
     };
-  }, [timeLeft, intervalId, stopTimer]);
+  }, [timeLeft, intervalId, stopTimer, endSession]);
 
   return (
     <TimerContext.Provider
@@ -77,6 +86,8 @@ export const TimerProvider = ({ children }) => {
         stopTimer,
         resetTimer,
         updateTotalTime,
+        sessions,
+        streak,
       }}
     >
       {children}
