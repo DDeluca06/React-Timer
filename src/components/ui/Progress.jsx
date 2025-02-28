@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
-import { useTimer } from '../hooks/useTimer';
+import { useTimer } from '../../hooks/useTimer';
 
 function LinearDeterminate() {
   const { timeLeft, totalTime } = useTimer();

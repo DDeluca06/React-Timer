@@ -1,5 +1,5 @@
-import { useTimer } from '../hooks/useTimer';
-import { formatTime } from '../utils/time';
+import { useTimer } from '../../hooks/useTimer';
+import { formatTime } from '../../hooks/Time';
 
 const TimerDisplay = () => {
   const { timeLeft } = useTimer();

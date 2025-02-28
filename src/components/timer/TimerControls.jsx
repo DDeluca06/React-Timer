@@ -1,5 +1,5 @@
 import Button from '../common/Button';
-import { useTimer } from '../hooks/useTimer';
+import { useTimer } from '../../hooks/useTimer';
 
 const TimerControls = () => {
   const { isRunning, isDebounced, startTimer, stopTimer, resetTimer } = useTimer();

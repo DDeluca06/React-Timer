@@ -1,20 +1,22 @@
 import './App.css';
-import TimerDisplay from './components/timer/TimerDisplay';
-import TimerControls from './components/timer/TimerControls';
-import LinearDeterminate from './components/ui/Progress';
 import { TimerProvider } from './components/context/TimerContext.jsx';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home.jsx';
+import About from './pages/About.jsx';
+import Settings from './pages/Settings.jsx';
+import Stats from './pages/Statistics.jsx';
 
 function App() {
   return (
     <TimerProvider>
-      <div className="app">
-        <h1>Pomodoro Timer</h1>
-        <TimerDisplay />
-        <TimerControls />
-      </div>
-      <div className="progress">
-        <LinearDeterminate />
-      </div>
+      <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/stats" element={<Stats />} />
+          </Routes>
+      </BrowserRouter>
     </TimerProvider>
   );
 }
