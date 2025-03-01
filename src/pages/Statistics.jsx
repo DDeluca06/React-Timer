@@ -10,15 +10,15 @@ function Stats() {
       <NavBar />
       <h1>Statistics</h1>
       <div className="stats-content">
-      <h2 style={{ color: 'white' }}>Current Streak</h2>
+      <h2>Current Streak</h2>
         {sessions.length === 0 ? (
-            <p style={{ color: 'white' }}>No streak here!</p>
+            <p>No streak here!</p>
         ) : (
-            <p style={{ color: 'white' }}>Your current streak is {streak}!</p>
-    )};
-        <h2 style={{ color: 'white' }}>Session History</h2>
+            <p>Your current streak is {streak}!</p>
+    )}
+        <h2 >Session History</h2>
             {sessions.length === 0 ? (
-            <p style={{ color: 'white' }}>No sessions yet!</p>
+            <p>No sessions yet!</p>
             ) : (
             <ul>
                 {sessions.map((session) => (

@@ -5,6 +5,7 @@ import Navbar from '../components/ui/Navbar';
 import { TimerProvider } from '../components/context/TimerContext.jsx';
 
 function Home() {
+
   return (
     <TimerProvider>
       <Navbar />

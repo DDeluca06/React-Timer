@@ -2,8 +2,17 @@
   --primary-color: #ff6b6b;
   --secondary-color: #4ecdc4;
   --background-color: #292525;
-  --text-color: #2d3436;
+  --text-color: #e2eaec;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-background: rgb(53, 50, 50);
+  --button-background: #352d2d;
+}
+
+[data-theme="light"] {
+  --background-color: #ffffff;
+  --text-color: #292541;
+  --card-background: #f9f9f9;
+  --button-background: #1a1a1a;
 }
 
 body {
@@ -20,7 +29,7 @@ body {
 }
 
 .app {
-  background: rgb(53, 50, 50);
+  background: var(--card-background);
   padding: 2rem;
   border-radius: 20px;
   box-shadow: var(--shadow);
@@ -51,7 +60,7 @@ h1 {
 }
 
 /* Button Styling */
-.controls{
+.controls {
   display: flex;
   gap: 1rem;
   justify-content: center;
@@ -97,7 +106,7 @@ button.stop {
 }
 
 button.reset {
-  background-color: #dfe6e9;
+  background-color: var(--button-background);
   color: var(--text-color);
 }
 
@@ -107,9 +116,11 @@ button.reset {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -134,7 +145,6 @@ button.reset {
 }
 
 /* Number Drop Animation */
-/* Define keyframes */
 @keyframes drop {
   from {
     transform: translateY(-20px);
@@ -146,7 +156,6 @@ button.reset {
   }
 }
 
-/* Apply to the text element */
 .number-drop {
   animation: drop 0.4s ease-in-out;
 }
