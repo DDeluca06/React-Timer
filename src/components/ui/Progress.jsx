@@ -1,9 +1,9 @@
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
-import { useTimer } from '../../hooks/useTimer';
+import { useTimerContext } from '../../hooks/useTimerContext';
 
 function LinearDeterminate() {
-  const { timeLeft, totalTime } = useTimer();
+  const { timeLeft, totalTime } = useTimerContext();
 
   // Calculate progress based on timeLeft and totalTime
   const progress = ((totalTime - timeLeft) / totalTime) * 100;

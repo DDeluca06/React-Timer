@@ -1,8 +1,8 @@
-import { useTimer } from '../../hooks/useTimer';
+import { useTimerContext } from '../../hooks/useTimerContext';
 import { formatTime } from '../../hooks/Time';
 
 const TimerDisplay = () => {
-  const { timeLeft } = useTimer();
+  const { timeLeft } = useTimerContext();
   const formattedTime = formatTime(timeLeft);
 
   return (

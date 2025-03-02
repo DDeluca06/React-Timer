@@ -1,10 +1,10 @@
 import Button from '../common/Button';
-import { useTimer } from '../../hooks/useTimer';
+import { useTimerContext } from '../../hooks/useTimerContext';
 import { toast } from 'react-toastify';
 import { useRef } from 'react';
 
 const TimerControls = () => {
-  const { isRunning, isDebounced, startTimer, stopTimer, resetTimer } = useTimer();
+  const { isRunning, isDebounced, startTimer, stopTimer, resetTimer } = useTimerContext();
 
     // useRef to prevent multiple toasts
     const hasStarted = useRef(false);
