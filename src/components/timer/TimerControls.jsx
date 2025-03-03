@@ -45,3 +45,50 @@ const TimerControls = () => {
 };
 
 export default TimerControls;
+
+// TimerControls.jsx
+// import Button from '../common/Button';
+// import { useTimerContext } from '../../hooks/useTimerContext';
+
+// const TimerControls = () => {
+//   const {
+//     isRunning,
+//     isDebounced,
+//     startTimer,
+//     stopTimer,
+//     resetTimer,
+//     startBreak,
+//     endBreak,
+//   } = useTimerContext();
+
+//   const handleStartStop = () => {
+//     if (isRunning) {
+//       stopTimer(); // Stop timer first
+//       startBreak(); // Start break when timer stops
+//     } else {
+//       endBreak(); // End break when timer resumes
+//       startTimer();
+//     }
+//   };
+
+//   return (
+//     <div className="controls">
+//       <Button
+//         onClick={handleStartStop}
+//         disabled={isDebounced}
+//         variant="primary"
+//         size="medium"
+//       >
+//         {isRunning ? 'Stop' : 'Start'}
+//       </Button>
+//       <Button
+//         onClick={resetTimer}
+//         disabled={isDebounced}
+//         variant="primary"
+//         size="medium"
+//       >
+//         Reset
+//       </Button>
+//     </div>
+//   );
+// };

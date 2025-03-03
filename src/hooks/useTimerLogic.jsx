@@ -1,5 +1,6 @@
 // src/hooks/useTimerLogic.jsx
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from "react";
+import { usePersistence } from "./usePersistence";
 
 export const useTimerLogic = () => {
   const [timeLeft, setTimeLeft] = useState(1500); // Default: 25 minutes in seconds
@@ -7,6 +8,21 @@ export const useTimerLogic = () => {
   const [isRunning, setRunning] = useState(false);
   const [isDebounced, setIsDebounced] = useState(false);
   const [intervalId, setIntervalId] = useState(null);
+  
+  // Helper functions to save and retrieve timer state
+  const saveTimerState = (state) => {
+    localStorage.setItem("timerState", JSON.stringify(state));
+  };
+
+  const getTimerState = () => {
+    const savedState = localStorage.getItem("timerState");
+    return savedState ? JSON.parse(savedState) : { timeLeft: 1500, isRunning: false, totalTime: 1500 }; // Default values
+  };
+
+  // Save timer state to localStorage whenever it changes
+  useEffect(() => {
+    saveTimerState({ timeLeft, isRunning, totalTime });
+  }, [timeLeft, isRunning, totalTime]);
 
   // Start timer function
   const startTimer = useCallback(() => {
@@ -51,6 +67,15 @@ export const useTimerLogic = () => {
     setTotalTime(newTotalTime);
     setTimeLeft(newTotalTime); // Reset timeLeft to the new totalTime
   }, []);
+
+  // Cleanup interval on unmount
+useEffect(() => {
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId); // Clear the interval on unmount
+      }
+    };
+}, [intervalId]);
 
   return {
     timeLeft,

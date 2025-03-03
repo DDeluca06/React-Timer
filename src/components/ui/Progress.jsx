@@ -10,6 +10,7 @@ function LinearDeterminate() {
 
   return (
     <Box sx={{ width: '100%' }}>
+      <h1>Progress: {progress.toFixed(2)}%</h1>
       <LinearProgress variant="determinate" value={progress} />
     </Box>
   );

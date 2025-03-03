@@ -18,25 +18,28 @@ export const TimerProvider = ({ children }) => {
     resetTimer,
     updateTotalTime,
     intervalId,
-    setTimeLeft, // Add setTimeLeft to the destructured values
+    setTimeLeft,
   } = useTimerLogic();
 
-  const { breaks, startBreak, endBreak } = useBreaks(); // Add startBreak and endBreak
+  // Custom hooks for breaks and sessions
+  const { breaks, startBreak, endBreak } = useBreaks();
   const { sessions, streak, startSession, endSession } = useSessions();
 
   // Effect to handle timer completion
   useEffect(() => {
+    // If timeLeft reaches 0, stop the timer and start a break
     if (timeLeft === 0) {
       stopTimer();
-      endSession(); // End the session
-      toast.success('Session completed! 🔥'); // Send a toast message
+      endSession();
+      startBreak(); 
+      toast.success('Session completed! Take a break! ☕');
     }
     return () => {
       if (intervalId && timeLeft === 0) {
         clearInterval(intervalId);
       }
     };
-  }, [timeLeft, intervalId, stopTimer, endSession]);
+  }, [timeLeft, intervalId, stopTimer, endSession, startBreak]);
 
   return (
     <TimerContext.Provider

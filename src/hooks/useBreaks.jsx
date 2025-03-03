@@ -1,39 +1,45 @@
-// src/hooks/useBreaks.js
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+
+const saveBreaks = (breaks) => {
+  localStorage.setItem('breaks', JSON.stringify(breaks));
+};
+
+const getBreaks = () => {
+  const breaks = localStorage.getItem('breaks');
+  return breaks ? JSON.parse(breaks) : [];
+};
 
 export const useBreaks = () => {
-  const [breaks, setBreaks] = useState([]);
+  const [breaks, setBreaks] = useState(getBreaks());
 
-  // Start a break
+  // Save breaks to localStorage on changes
+  useEffect(() => saveBreaks(breaks), [breaks]);
+
   const startBreak = useCallback(() => {
     const newBreak = {
       id: Date.now().toString(),
       startTime: Date.now(),
-      endTime: null,
+      endTime: null, // Initially null until break ends
       duration: 0,
     };
-    setBreaks((prevBreaks) => [...prevBreaks, newBreak]);
-  }, []); // No dependencies, so the function is memoized and stable
+    setBreaks((prev) => [...prev, newBreak]);
+  }, []);
 
-  // End a break
   const endBreak = useCallback(() => {
-    setBreaks((prevBreaks) => {
-      const lastBreak = prevBreaks[prevBreaks.length - 1];
-      if (lastBreak && !lastBreak.endTime) {
+    setBreaks((prev) => {
+      const lastBreak = prev[prev.length - 1];
+      // Update the last break's endTime and duration
+      if (lastBreak?.endTime === null) {
         const updatedBreak = {
           ...lastBreak,
           endTime: Date.now(),
-          duration: Math.floor((Date.now() - lastBreak.startTime) / 1000), // Duration in seconds
+          duration: Math.floor((Date.now() - lastBreak.startTime) / 1000),
         };
-        return [...prevBreaks.slice(0, -1), updatedBreak];
+        return [...prev.slice(0, -1), updatedBreak];
       }
-      return prevBreaks;
+      return prev;
     });
-  }, []); // No dependencies, so the function is memoized and stable
+  }, []);
 
-  return {
-    breaks,
-    startBreak,
-    endBreak,
-  };
+  return { breaks, startBreak, endBreak };
 };

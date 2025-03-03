@@ -21,16 +21,19 @@ function Stats() {
         </div>
         <div className="stat-card">
           <h2>Break Frequency</h2>
-          <p>{breakFrequency} breaks</p>
+          <p>{breaks.filter(br => br.endTime !== null).length} breaks</p> {/* Filter out breaks that are still in progress */}
         </div>
         <div className="stat-card">
           <h2>Total Sessions</h2>
-          <p>{sessions.length}</p>
+          <p>{sessions.length} sessions</p>
         </div>
         <div className="stat-card">
           <h2>Total Break Time</h2>
           <p>
-            {breaks.reduce((total, br) => total + (br.duration || 0), 0)} seconds
+              {breaks
+                .filter((br) => br.endTime !== null)
+                .reduce((total, br) => total + br.duration, 0)}{' '}
+              seconds
           </p>
         </div>
       </div>
