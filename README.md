@@ -18,6 +18,7 @@ This is a simple timer application built with React. It allows you to start a ti
 
 ## Structure
 ```
+Timer
 ├─ eslint.config.js
 ├─ index.html
 ├─ package-lock.json
@@ -28,23 +29,43 @@ This is a simple timer application built with React. It allows you to start a ti
 ├─ README.md
 ├─ src
 │  ├─ App.css
-│  ├─ app.jsx
+│  ├─ App.jsx
 │  ├─ components
+│  │  ├─ analytics
+│  │  │  ├─ SessionStats.jsx
+│  │  │  └─ StreakCounter.jsx
 │  │  ├─ common
 │  │  │  └─ Button.jsx
 │  │  ├─ context
 │  │  │  └─ TimerContext.jsx
-│  │  ├─ hooks
-│  │  │  └─ useTimer.jsx
+│  │  ├─ ErrorBoundary.jsx
+│  │  ├─ settings
+│  │  │  └─ SettingsPanel.jsx
 │  │  ├─ timer
 │  │  │  ├─ TimerControls.jsx
 │  │  │  └─ TimerDisplay.jsx
-│  │  ├─ ui
-│  │  │  └─ Progress.jsx
-│  │  └─ utils
-│  │     └─ Time.jsx
+│  │  └─ ui
+│  │     ├─ Footer.jsx
+│  │     ├─ NavBar.css
+│  │     ├─ NavBar.jsx
+│  │     ├─ Progress.jsx
+│  │     └─ ThemeSwitcher.jsx
+│  ├─ hooks
+│  │  ├─ Time.jsx
+│  │  ├─ useAnalytics.jsx
+│  │  ├─ useBreaks.jsx
+│  │  ├─ usePersistence.jsx
+│  │  ├─ useSessions.jsx
+│  │  ├─ useTimerContext.jsx
+│  │  └─ useTimerLogic.jsx
 │  ├─ index.css
-│  └─ main.jsx
+│  ├─ main.jsx
+│  └─ pages
+│     ├─ About.jsx
+│     ├─ Home.jsx
+│     ├─ Settings.jsx
+│     └─ Statistics.jsx
 ├─ tailwind.config.js
 └─ vite.config.js
+
 ```
