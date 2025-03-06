@@ -16,6 +16,7 @@ export const useBreaks = () => {
   useEffect(() => saveBreaks(breaks), [breaks]);
 
   const startBreak = useCallback(() => {
+    console.log("Starting break...");
     const newBreak = {
       id: Date.now().toString(),
       startTime: Date.now(),

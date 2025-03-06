@@ -18,6 +18,9 @@ const NavBar = () => {
                     <li>
                         <Link to="/settings">Settings</Link>
                     </li>
+                    <li>
+                        <Link to="/achievements">Achievements</Link>
+                    </li>
                 </ul>
             </div>
         </nav>

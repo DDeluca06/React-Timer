@@ -2,9 +2,13 @@ import Button from '../common/Button';
 import { useTimerContext } from '../../hooks/useTimerContext';
 import { toast } from 'react-toastify';
 import { useRef } from 'react';
+import { useBreaks } from '../../hooks/useBreaks';
+import { useSessions } from '../../hooks/useSessions';
 
 const TimerControls = () => {
   const { isRunning, isDebounced, startTimer, stopTimer, resetTimer } = useTimerContext();
+  const {startBreak, endBreak} = useBreaks();
+  const { startSession, endSession } = useSessions();
 
     // useRef to prevent multiple toasts
     const hasStarted = useRef(false);
@@ -16,9 +20,13 @@ const TimerControls = () => {
         toast.success('Session started!');
         hasStarted.current = true;
     }
+    endBreak();
+    startSession();
     startTimer();
   } else {
     stopTimer();
+    endSession();
+    startBreak();
     }
 };
 
@@ -45,50 +53,3 @@ const TimerControls = () => {
 };
 
 export default TimerControls;
-
-// TimerControls.jsx
-// import Button from '../common/Button';
-// import { useTimerContext } from '../../hooks/useTimerContext';
-
-// const TimerControls = () => {
-//   const {
-//     isRunning,
-//     isDebounced,
-//     startTimer,
-//     stopTimer,
-//     resetTimer,
-//     startBreak,
-//     endBreak,
-//   } = useTimerContext();
-
-//   const handleStartStop = () => {
-//     if (isRunning) {
-//       stopTimer(); // Stop timer first
-//       startBreak(); // Start break when timer stops
-//     } else {
-//       endBreak(); // End break when timer resumes
-//       startTimer();
-//     }
-//   };
-
-//   return (
-//     <div className="controls">
-//       <Button
-//         onClick={handleStartStop}
-//         disabled={isDebounced}
-//         variant="primary"
-//         size="medium"
-//       >
-//         {isRunning ? 'Stop' : 'Start'}
-//       </Button>
-//       <Button
-//         onClick={resetTimer}
-//         disabled={isDebounced}
-//         variant="primary"
-//         size="medium"
-//       >
-//         Reset
-//       </Button>
-//     </div>
-//   );
-// };

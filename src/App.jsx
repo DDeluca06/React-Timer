@@ -8,6 +8,7 @@ import Home from './pages/Home.jsx';
 import About from './pages/About.jsx';
 import Settings from './pages/Settings.jsx';
 import Stats from './pages/Statistics.jsx';
+import AchievementsPage from './pages/Achievements.jsx';
 /* --------------------------------- IMPORTS -------------------------------- */
 
 /* ----------------------------------- APP ---------------------------------- */
@@ -20,6 +21,7 @@ function App() {
               <Route path="/about" element={<About />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/stats" element={<Stats />} />
+              <Route path="/achievements" element={<AchievementsPage />} />
           </Routes>
           <ToastContainer
           position="bottom-right"

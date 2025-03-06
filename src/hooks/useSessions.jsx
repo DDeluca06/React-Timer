@@ -41,7 +41,7 @@ return streak;
 };
 
 // Custom hook to manage our sessions
-const useSessions = () => {
+export const useSessions = () => {
     const [sessions, setSessions] = useState(getSessions());
     const [streak, setStreak] = useState(calculateStreak(sessions));
     const [isSessionActive, setIsSessionActive] = useState(false);
@@ -53,34 +53,52 @@ const useSessions = () => {
 
     // Start a new session
     const startSession = () => {
+        console.log("Starting session...");
         const newSession = {
-            id: Date.now().toString(),
-            startTime: Date.now(),
-            endTime: null,
-            duration: 0,
+          id: Date.now().toString(),
+          startTime: Date.now(),
+          endTime: null,
+          duration: 0,
         };
+      
         // Set session active
         setIsSessionActive(true);
-        Cookies.set('currentSession', JSON.stringify(newSession));
-    };
+        Cookies.set('currentSession', JSON.stringify(newSession), { expires: 1 }); // Expires in 1 day
+      };
 
-    // End our current session
+    // End our session
     const endSession = () => {
-        const currentSession = JSON.parse(Cookies.get('currentSession'));
-        if (currentSession) {
-            const updatedSession = {
-                ...currentSession,
-                endTime: Date.now(),
-                duration: Math.floor((Date.now() - currentSession.startTime) / 1000), // Duration in seconds
-            };
-        // Update sessions
-        const updatedSessions = [...sessions, updatedSession];
-        setSessions(updatedSessions);
-        saveSessions(updatedSessions);
-        Cookies.remove('currentSession');
-        setIsSessionActive(false);
-    }
-};
+        const currentSessionCookie = Cookies.get('currentSession');
+        if (!currentSessionCookie) {
+          console.error("No active session found.");
+          return;
+        }
+      
+        try {
+          const currentSession = JSON.parse(currentSessionCookie);
+          if (!currentSession || !currentSession.startTime) {
+            console.error("Invalid session data.");
+            return;
+          }
+      
+          const updatedSession = {
+            ...currentSession,
+            endTime: Date.now(),
+            duration: Math.floor((Date.now() - currentSession.startTime) / 1000), // Duration in seconds
+          };
+      
+          // Update sessions
+          const updatedSessions = [...sessions, updatedSession];
+          setSessions(updatedSessions);
+          saveSessions(updatedSessions);
+          Cookies.remove('currentSession');
+          setIsSessionActive(false);
+
+          console.log("Session ended:", updatedSession);
+        } catch (error) {
+          console.error("Failed to parse session data:", error);
+        }
+      };
 
 return {
     sessions,
