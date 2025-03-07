@@ -54,113 +54,64 @@ A modern, feature-rich Pomodoro timer application built with React. This applica
 
 ## Structure
 ```
-Timer
-├─ eslint.config.js
-├─ index.html
-├─ package-lock.json
-├─ package.json
-├─ postcss.config.js
-├─ public
-│  └─ vite.svg
-├─ README.md
-├─ src
-│  ├─ App.css
-│  ├─ App.jsx
-│  ├─ components
-│  │  ├─ analytics
-│  │  │  ├─ SessionStats.jsx
-│  │  │  └─ StreakCounter.jsx
-│  │  ├─ common
-│  │  │  └─ Button.jsx
-│  │  ├─ context
-│  │  │  └─ TimerContext.jsx
-│  │  ├─ ErrorBoundary.jsx
-│  │  ├─ settings
-│  │  │  └─ SettingsPanel.jsx
-│  │  ├─ timer
-│  │  │  ├─ TimerControls.jsx
-│  │  │  └─ TimerDisplay.jsx
-│  │  └─ ui
-│  │     ├─ Footer.jsx
-│  │     ├─ NavBar.css
-│  │     ├─ NavBar.jsx
-│  │     ├─ Progress.jsx
-│  │     └─ ThemeSwitcher.jsx
-│  ├─ hooks
-│  │  ├─ Time.jsx
-│  │  ├─ useAnalytics.jsx
-│  │  ├─ useBreaks.jsx
-│  │  ├─ usePersistence.jsx
-│  │  ├─ useSessions.jsx
-│  │  ├─ useTimerContext.jsx
-│  │  └─ useTimerLogic.jsx
-│  ├─ index.css
-│  ├─ main.jsx
-│  └─ pages
-│     ├─ About.jsx
-│     ├─ Home.jsx
-│     ├─ Settings.jsx
-│     └─ Statistics.jsx
-├─ tailwind.config.js
-└─ vite.config.js
-
-```
-```
-Timer
-├─ eslint.config.js
-├─ index.html
-├─ package-lock.json
-├─ package.json
-├─ postcss.config.js
-├─ public
-│  └─ vite.svg
-├─ README.md
-├─ src
-│  ├─ App.css
-│  ├─ App.jsx
-│  ├─ components
-│  │  ├─ analytics
-│  │  │  ├─ SessionStats.jsx
-│  │  │  └─ StreakCounter.jsx
-│  │  ├─ common
-│  │  │  └─ Button.jsx
-│  │  ├─ context
-│  │  │  └─ TimerContext.jsx
-│  │  ├─ ErrorBoundary.jsx
-│  │  ├─ settings
-│  │  │  └─ SettingsPanel.jsx
-│  │  ├─ timer
-│  │  │  ├─ AchievementsList.jsx
-│  │  │  ├─ TimerControls.jsx
-│  │  │  └─ TimerDisplay.jsx
-│  │  └─ ui
-│  │     ├─ Footer.jsx
-│  │     ├─ NavBar.css
-│  │     ├─ NavBar.jsx
-│  │     ├─ Progress.jsx
-│  │     └─ ThemeSwitcher.jsx
-│  ├─ data
-│  │  └─ achievements.js
-│  ├─ hooks
-│  │  ├─ Time.jsx
-│  │  ├─ useAnalytics.jsx
-│  │  ├─ useBreaks.jsx
-│  │  ├─ usePersistence.jsx
-│  │  ├─ useSessions.jsx
-│  │  ├─ useTimerContext.jsx
-│  │  └─ useTimerLogic.jsx
-│  ├─ index.css
-│  ├─ main.jsx
-│  ├─ pages
-│  │  ├─ About.jsx
-│  │  ├─ Achievements.jsx
-│  │  ├─ Home.jsx
-│  │  ├─ Settings.jsx
-│  │  └─ Statistics.jsx
-│  └─ utils
-│     ├─ Achievements.jsx
-│     └─ Storage.jsx
-├─ tailwind.config.js
-└─ vite.config.js
+Timer/
+├─ .gitignore
+├─ eslint.config.js               
+├─ index.html                     
+├─ package-lock.json             
+├─ package.json                  
+├─ postcss.config.js            
+├─ public/                      # Static assets directory
+│  └─ vite.svg                 
+├─ README.md                   # You Are Here
+├─ src/                       # Source code directory
+│  ├─ App.css                
+│  ├─ App.jsx               # Root application component
+│  ├─ components/          
+│  │  ├─ analytics/       
+│  │  │  ├─ SessionStats.jsx    # Displays session statistics
+│  │  │  └─ StreakCounter.jsx   # Shows current streak count
+│  │  ├─ common/              
+│  │  │  └─ Button.jsx        
+│  │  ├─ context/            
+│  │  │  └─ TimerContext.jsx # Timer state management context
+│  │  ├─ ErrorBoundary.jsx  # Error handling component
+│  │  ├─ settings/         
+│  │  │  └─ SettingsPanel.jsx # User settings interface
+│  │  ├─ timer/          
+│  │  │  ├─ AchievementsList.jsx # Lists user achievements
+│  │  │  ├─ TimerControls.jsx    # Timer control buttons
+│  │  │  ├─ TimerDisplay.jsx     # Displays current timer
+│  │  │  └─ TimerModeSelector.jsx # Timer mode selection
+│  │  └─ ui/                    
+│  │     ├─ Footer.jsx         # Application footer
+│  │     ├─ NavBar.css         # Navigation bar styles
+│  │     ├─ NavBar.jsx         # Navigation bar component
+│  │     ├─ Progress.jsx       # Progress bar component (MUI)
+│  │     └─ ThemeSwitcher.jsx  # Theme toggle component
+│  ├─ data/                   
+│  │  └─ achievements.js     # Achievement definitions
+│  ├─ hooks/                
+│  │  ├─ useAnalytics.jsx  # Analytics tracking hook
+│  │  ├─ useBreaks.jsx     # Break management hook
+│  │  ├─ usePersistence.jsx # Data persistence hook
+│  │  ├─ useSessions.jsx    # Session management hook
+│  │  ├─ useTime.jsx        # Time formatting hook
+│  │  ├─ useTimerContext.jsx # Timer context hook
+│  │  └─ useTimerLogic.jsx   # Timer logic hook
+│  ├─ index.css              
+│  ├─ main.jsx              
+│  ├─ pages/               
+│  │  ├─ About.jsx        
+│  │  ├─ Achievements.jsx 
+│  │  ├─ Home.jsx        
+│  │  ├─ Settings.jsx    
+│  │  └─ Statistics.jsx  
+│  └─ utils/            
+│     ├─ Achievements.jsx # Achievement handling
+│     ├─ Notifications.jsx # Notification handling based on user preference
+│     └─ Storage.jsx      # localStorage operations and handling
+├─ tailwind.config.js    
+└─ vite.config.js       
 
 ```
