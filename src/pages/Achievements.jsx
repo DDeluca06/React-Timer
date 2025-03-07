@@ -1,6 +1,6 @@
-import { loadAchievements } from "../utils/storage";
+import { loadAchievements } from "../utils/Storage";
 import AchievementsList from "../components/timer/AchievementsList";
-import Navbar from '../components/ui/Navbar';
+import Navbar from '../components/ui/NavBar';
 
 const AchievementsPage = () => {
   const achievements = loadAchievements() || []; 
