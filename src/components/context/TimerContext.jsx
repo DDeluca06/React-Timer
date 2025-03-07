@@ -5,6 +5,7 @@ import { useSessions } from "../../hooks/useSessions";
 import { getAchievements, checkAchievements } from "../../utils/Achievements";
 import { saveAchievements, loadAchievements, saveSettings, loadSettings } from "../../utils/Storage";
 import { showToast } from "../../utils/Notifications";
+import { playTimerComplete } from "../../utils/Sound";
 import PropTypes from "prop-types";
 
 export const TimerContext = createContext();
@@ -47,6 +48,8 @@ export const TimerProvider = ({ children }) => {
     theme: "dark",
     soundEnabled: true,
     notificationsEnabled: true,
+    allowSkipBreaks: true,
+    autoStartPomodoros: false,
     timerPresets: {
       pomodoro: 1500, // 25 minutes in seconds
       shortBreak: 300, // 5 minutes in seconds
@@ -129,6 +132,9 @@ export const TimerProvider = ({ children }) => {
         // End the work session
         endSession();
 
+        // Play completion sound
+        playTimerComplete();
+
         // Increment completed pomodoros
         const newCompletedPomodoros = completedPomodoros + 1;
         setCompletedPomodoros(newCompletedPomodoros);
@@ -159,6 +165,9 @@ export const TimerProvider = ({ children }) => {
       } else {
         // End the break
         endBreak();
+
+        // Play completion sound
+        playTimerComplete();
 
         // Switch back to pomodoro mode and save to localStorage
         setTimerMode('pomodoro');

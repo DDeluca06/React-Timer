@@ -1,167 +1,94 @@
-:root {
-  --primary-color: #ff6b6b;
-  --secondary-color: #4ecdc4;
-  --background-color: #292525;
-  --text-color: #e2eaec;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --card-background: rgb(53, 50, 50);
-  --button-background: #352d2d;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-light-bg dark:bg-dark-bg text-light-text dark:text-dark-text;
+  }
 }
 
-[data-theme="light"] {
-  --background-color: #ffffff;
-  --text-color: #292541;
-  --card-background: #f9f9f9;
-  --button-background: #1a1a1a;
+@layer components {
+  #root {
+    @apply max-w-7xl mx-auto p-8 text-center;
+  }
+
+  .app {
+    @apply bg-light-card dark:bg-dark-card p-8 rounded-[20px] shadow-custom 
+           max-w-[400px] mx-auto my-8 transition-transform duration-200 
+           hover:-translate-y-1;
+  }
+
+  h1 {
+    @apply text-primary text-4xl mb-8 font-bold;
+  }
+
+  .timer {
+    @apply text-6xl font-bold text-light-text dark:text-dark-text my-8 
+           font-mono shadow-sm;
+  }
+
+  .controls {
+    @apply flex gap-4 justify-center mt-8;
+  }
+
+  .button-base {
+    @apply px-6 py-3 rounded-lg font-semibold cursor-pointer 
+           transition-all duration-200 uppercase tracking-wider
+           border-none text-base
+           hover:-translate-y-0.5 hover:shadow-custom
+           active:translate-y-0
+           disabled:opacity-60 disabled:cursor-not-allowed 
+           disabled:transform-none disabled:shadow-none;
+  }
+
+  .button-start {
+    @apply button-base bg-secondary text-white hover:brightness-110;
+  }
+
+  .button-stop {
+    @apply button-base bg-primary text-white hover:brightness-110;
+  }
+
+  .button-reset {
+    @apply button-base bg-light-button dark:bg-dark-button 
+           text-light-text dark:text-dark-text hover:brightness-110;
+  }
+
+  .stats-grid {
+    @apply grid grid-cols-1 md:grid-cols-4 gap-5 mb-5;
+  }
+
+  .stat-card {
+    @apply bg-light-card dark:bg-dark-card p-5 rounded-lg 
+           text-center shadow-custom;
+  }
+
+  .session-history {
+    @apply mt-5;
+  }
+
+  .session-history ul {
+    @apply list-none p-0;
+  }
+
+  .session-history li {
+    @apply bg-light-card dark:bg-dark-card p-3 rounded 
+           mb-2 text-light-text dark:text-dark-text;
+  }
+
+  /* Settings specific styles */
+  .settings-panel {
+    @apply bg-light-card dark:bg-dark-card rounded-lg shadow-custom;
+  }
+
+  .setting-card {
+    @apply bg-light-bg dark:bg-dark-bg p-4 rounded-lg shadow-sm
+           hover:shadow-custom transition-shadow duration-200;
+  }
 }
 
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-}
-
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.app {
-  background: var(--card-background);
-  padding: 2rem;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  max-width: 400px;
-  margin: 2rem auto;
-  transition: transform 0.2s ease;
-}
-
-.app:hover {
-  transform: translateY(-5px);
-}
-
-h1 {
-  color: var(--primary-color);
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  font-weight: 700;
-}
-
-/* Timer Display Styling */
-.timer {
-  font-size: 4rem;
-  font-weight: bold;
-  color: var(--text-color);
-  margin: 2rem 0;
-  font-family: 'Courier New', monospace;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Button Styling */
-.controls {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
-}
-
-button {
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-}
-
-button.start {
-  background-color: var(--secondary-color);
-  color: white;
-}
-
-button.stop {
-  background-color: var(--primary-color);
-  color: white;
-}
-
-button.reset {
-  background-color: var(--button-background);
-  color: var(--text-color);
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-.page-container {
-  padding: 20px;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-template-areas: 
-  "Stats Stats Stats Stats";
-  gap: 20px;
-  margin-bottom: 20px;
-}
-
-.stat-card {
-  background: var(--card-background);
-  padding: 20px;
-  border-radius: 8px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.session-history {
-  margin-top: 20px;
-}
-
-.session-history ul {
-  list-style: none;
-  padding: 0;
-}
-
-.session-history li {
-  background: var(--card-background);
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 10px;
-}
-
+/* Animations */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -171,17 +98,6 @@ button.reset {
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-/* Number Drop Animation */
 @keyframes drop {
   from {
     transform: translateY(-20px);

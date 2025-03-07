@@ -18,6 +18,11 @@ export const saveAchievements = (achievements) => {
         theme: "dark",
         soundEnabled: true,
         notificationsEnabled: true,
+        autoStartBreaks: false,
+        autoStartPomodoros: false,
+        allowSkipBreaks: true,
+        strictMode: false,
+        longBreakInterval: 4,
         timerPresets: { pomodoro: 1500, shortBreak: 300, longBreak: 900 }
     };
   };

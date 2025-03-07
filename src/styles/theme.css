@@ -1,0 +1,82 @@
+:root {
+    /* Theme Variables */
+    --color-primary: #3B82F6;
+    --color-secondary: #1F2937;
+    --color-accent: #10B981;
+    --color-text: #111827;
+    --color-background: #F3F4F6;
+}
+
+/* Theme Utility Classes */
+.bg-theme-primary {
+    background-color: var(--color-primary);
+}
+
+.bg-theme-secondary {
+    background-color: var(--color-secondary);
+}
+
+.bg-theme-accent {
+    background-color: var(--color-accent);
+}
+
+.text-theme-primary {
+    color: var(--color-primary);
+}
+
+.text-theme-secondary {
+    color: var(--color-secondary);
+}
+
+.text-theme-accent {
+    color: var(--color-accent);
+}
+
+.border-theme-primary {
+    border-color: var(--color-primary);
+}
+
+.border-theme-secondary {
+    border-color: var(--color-secondary);
+}
+
+.border-theme-accent {
+    border-color: var(--color-accent);
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: opacity 0.2s;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: opacity 0.2s;
+}
+
+.btn-secondary:hover {
+    opacity: 0.9;
+}
+
+.btn-accent {
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    transition: opacity 0.2s;
+}
+
+.btn-accent:hover {
+    opacity: 0.9;
+} 

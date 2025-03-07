@@ -6,30 +6,82 @@ const Button = ({
     variant = 'primary',
     size = 'medium',
     className = '',
+    disabled = false,
+    onClick,
     ...props
 }) => {
-    // Base styles for our button
-    const baseStyles = 'rounded-lg transition-colors duration-300 ease-in-out';
+    // Base styles including better feedback animations
+    const baseStyles = `
+        rounded-lg font-semibold relative
+        transition-all duration-200
+        transform active:scale-95
+        focus:outline-none focus:ring-2 focus:ring-opacity-50
+        disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none
+        disabled:hover:transform-none disabled:active:scale-100
+        overflow-hidden
+    `;
 
-    // Variant styles for our button, this makes it easier to change the look of the button depending on what function we need it to servef from a UI perspective.
+    // Enhanced variant styles with focus ring colors
     const variantStyles = {
-        primary: 'bg-blue-500 text-white hover:bg-blue-600',
-        secondary: 'bg-gray-500 text-white hover:bg-gray-600',
-        danger: 'bg-red-500 text-white hover:bg-red-600',
+        primary: `
+            bg-secondary text-white
+            hover:bg-opacity-90 hover:-translate-y-0.5
+            active:bg-opacity-100 active:translate-y-0
+            focus:ring-secondary
+            disabled:bg-opacity-70
+        `,
+        secondary: `
+            bg-light-button dark:bg-dark-button text-light-text dark:text-dark-text
+            hover:bg-opacity-90 hover:-translate-y-0.5
+            active:bg-opacity-100 active:translate-y-0
+            focus:ring-gray-400
+            disabled:bg-opacity-70
+        `,
+        danger: `
+            bg-primary text-white
+            hover:bg-opacity-90 hover:-translate-y-0.5
+            active:bg-opacity-100 active:translate-y-0
+            focus:ring-primary
+            disabled:bg-opacity-70
+        `,
     };
     
-    // Define button size styles to make them adaptable
+    // Enhanced size styles
     const sizeStyles = {
-        size: 'px-3 py-1 text-sm',
+        small: 'px-3 py-1.5 text-sm',
         medium: 'px-4 py-2 text-base',
         large: 'px-6 py-3 text-lg',
     };
 
-    // Return the button component styles depending on the variant and size we get back from props
-    return(
+    // Add ripple effect on click
+    const handleClick = (e) => {
+        if (disabled) return;
+        
+        // Create ripple element
+        const ripple = document.createElement('span');
+        const rect = e.target.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size/2;
+        const y = e.clientY - rect.top - size/2;
+        
+        ripple.style.width = ripple.style.height = `${size}px`;
+        ripple.style.left = `${x}px`;
+        ripple.style.top = `${y}px`;
+        ripple.className = 'absolute rounded-full bg-white bg-opacity-30 pointer-events-none transform scale-0 animate-ripple';
+        
+        e.target.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+
+        // Call original onClick if it exists
+        if (onClick) onClick(e);
+    };
+
+    return (
         <button
-        className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
-        {...props}
+            className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+            disabled={disabled}
+            onClick={handleClick}
+            {...props}
         >
             {children}
         </button>
@@ -41,8 +93,10 @@ const Button = ({
 Button.propTypes = {
     children: PropTypes.node.isRequired,
     variant: PropTypes.oneOf(['primary', 'secondary', 'danger']),
-    size: PropTypes.oneOf(['size', 'medium', 'large']),
+    size: PropTypes.oneOf(['small', 'medium', 'large']),
     className: PropTypes.string,
+    disabled: PropTypes.bool,
+    onClick: PropTypes.func,
 };
 
 // Defaults
@@ -50,6 +104,7 @@ Button.defaultProps = {
     variant: 'primary',
     size: 'medium',
     className: '',
+    disabled: false,
 };
 
 export default Button;
