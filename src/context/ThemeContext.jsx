@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const ThemeContext = createContext();
 
+// Custom hook to use the theme context
 export const useTheme = () => {
     const context = useContext(ThemeContext);
     if (!context) {
@@ -11,6 +12,7 @@ export const useTheme = () => {
     return context;
 };
 
+// Theme provider component
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState({
         primary: '#ff6b6b',
@@ -30,6 +32,7 @@ export const ThemeProvider = ({ children }) => {
         }
     });
 
+    // Update the theme
     const updateTheme = (newTheme) => {
         setTheme(prev => ({
             ...prev,

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useTheme } from '../../context/ThemeContext';
 
 // Defining our Button component and determining variance, size, etc. 
 const Button = ({
@@ -10,6 +11,8 @@ const Button = ({
     onClick,
     ...props
 }) => {
+    const { theme } = useTheme();
+
     // Base styles including better feedback animations
     const baseStyles = `
         rounded-lg font-semibold relative
@@ -21,31 +24,25 @@ const Button = ({
         overflow-hidden
     `;
 
-    // Enhanced variant styles with focus ring colors
-    const variantStyles = {
-        primary: `
-            bg-secondary text-white
-            hover:bg-opacity-90 hover:-translate-y-0.5
-            active:bg-opacity-100 active:translate-y-0
-            focus:ring-secondary
-            disabled:bg-opacity-70
-        `,
-        secondary: `
-            bg-light-button dark:bg-dark-button text-light-text dark:text-dark-text
-            hover:bg-opacity-90 hover:-translate-y-0.5
-            active:bg-opacity-100 active:translate-y-0
-            focus:ring-gray-400
-            disabled:bg-opacity-70
-        `,
-        danger: `
-            bg-primary text-white
-            hover:bg-opacity-90 hover:-translate-y-0.5
-            active:bg-opacity-100 active:translate-y-0
-            focus:ring-primary
-            disabled:bg-opacity-70
-        `,
+    // Get dynamic styles based on theme
+    const getVariantStyle = (variant) => {
+        const styles = {
+            primary: {
+                backgroundColor: theme.primary,
+                color: '#ffffff',
+            },
+            secondary: {
+                backgroundColor: theme.secondary,
+                color: '#ffffff',
+            },
+            danger: {
+                backgroundColor: theme.accent,
+                color: '#ffffff',
+            },
+        };
+        return styles[variant] || styles.primary;
     };
-    
+
     // Enhanced size styles
     const sizeStyles = {
         small: 'px-3 py-1.5 text-sm',
@@ -76,11 +73,17 @@ const Button = ({
         if (onClick) onClick(e);
     };
 
+    const variantStyle = getVariantStyle(variant);
+
     return (
         <button
-            className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+            className={`${baseStyles} ${sizeStyles[size]} ${className} hover:opacity-90 hover:-translate-y-0.5`}
             disabled={disabled}
             onClick={handleClick}
+            style={{
+                ...variantStyle,
+                opacity: disabled ? 0.6 : 1,
+            }}
             {...props}
         >
             {children}

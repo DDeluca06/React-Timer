@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TimerContext } from '../context/TimerContext';
+import { TimerContext } from '../../context/TimerContext';
 
 const BreakSettings = () => {
   const { settings, updateSettings } = useContext(TimerContext);

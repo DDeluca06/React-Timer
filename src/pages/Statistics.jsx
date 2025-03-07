@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TimerContext } from '../components/context/TimerContext';
+import { TimerContext } from '../context/TimerContext';
 import NavBar from '../components/ui/NavBar';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

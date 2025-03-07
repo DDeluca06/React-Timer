@@ -1,6 +1,6 @@
 import Button from '../common/Button';
 import { useRef, useContext, useState, useEffect } from 'react';
-import { TimerContext } from '../context/TimerContext';
+import { TimerContext } from '../../context/TimerContext';
 import { showToast } from '../../utils/Notifications';
 
 const TimerControls = () => {

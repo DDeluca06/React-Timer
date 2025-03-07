@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TimerContext } from '../context/TimerContext';
+import { TimerContext } from '../../context/TimerContext';
 import { showToast } from '../../utils/Notifications';
 
 const BreakActions = () => {

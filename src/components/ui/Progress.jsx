@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 import { useContext, useMemo, useEffect, useState, useRef } from 'react';
-import { TimerContext } from '../context/TimerContext';
+import { TimerContext } from '../../context/TimerContext';
 
 function LinearDeterminate() {
   const { timeLeft, totalTime, timerMode, isRunning } = useContext(TimerContext);

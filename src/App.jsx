@@ -1,7 +1,7 @@
 /* --------------------------------- IMPORTS -------------------------------- */
 import './App.css';
-import { TimerProvider } from './components/context/TimerContext.jsx';
-import { ThemeProvider } from './components/context/ThemeContext.jsx';
+import { TimerProvider } from './context/TimerContext.jsx';
+import { ThemeProvider } from './context/ThemeContext.jsx';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from "react-toastify";
 import ErrorBoundary from './components/ErrorBoundary.jsx';

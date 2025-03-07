@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { TimerContext } from '../context/TimerContext';
+import { TimerContext } from '../../context/TimerContext';
 
 const SessionPlanner = () => {
     const { settings, updateSettings } = useContext(TimerContext);

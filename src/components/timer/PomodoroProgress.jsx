@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { TimerContext } from '../context/TimerContext';
+import { TimerContext } from '../../context/TimerContext';
 
 const PomodoroProgress = () => {
   const { completedPomodoros, settings, timerMode } = useContext(TimerContext);

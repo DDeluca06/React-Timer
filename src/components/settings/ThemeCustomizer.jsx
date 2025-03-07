@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useTheme } from '../../components/context/ThemeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const ThemeCustomizer = () => {
     const { theme, updateTheme } = useTheme();

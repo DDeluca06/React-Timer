@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { formatTime } from '../../hooks/useTime';
-import { TimerContext } from '../context/TimerContext';
+import { TimerContext } from '../../context/TimerContext';
 
 const TimerDisplay = () => {
   const { timeLeft, timerMode } = useContext(TimerContext);

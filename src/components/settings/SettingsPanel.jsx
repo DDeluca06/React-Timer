@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { TimerContext } from "../context/TimerContext";
+import { TimerContext } from "../../context/TimerContext";
 import ThemeSwitcher from "../ui/ThemeSwitcher";
 import BreakSettings from "./BreakSettings";
 import SessionPlanner from "./SessionPlanner";
