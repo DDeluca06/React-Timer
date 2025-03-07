@@ -1,21 +1,56 @@
 # React Focus Timer
-This is a simple timer application built with React. It only allows you to start a timer right now, but soon it'll do more things. The timer is in active & rapid development, please expect things to break; anything from the main branch *should* be fine to pull from?
+
+A modern, feature-rich Pomodoro timer application built with React. This application helps users maintain focus and productivity through timed work sessions and breaks.
 
 ## Features
-- Start a 25 minute timer.
-- Reset & Stop/Pause timer.
-- Progress Bar.
-- Toast notifications (courtesy of [react toasify](https://www.npmjs.com/package/react-toastify))
+- Customizable focus timer (default 25 minutes)
+- Timer controls (Start, Pause, Reset)
+- Visual progress tracking with dynamic progress bar
+- Session statistics and streak tracking
+- Break management system
+- Toast notifications for session updates and milestones
+- Dark/Light theme support
+- Persistent settings and session data
+- Mobile-responsive design
 
-## Technologies Used
-- React
-- Tailwind CSS
-- Vite
+## Core Technologies
+- React 18
+- Tailwind CSS for styling
+- Vite for build tooling
+- Material-UI components
+- React Router for navigation
+- React Toastify for notifications
 
-## Installation
-1. Clone the repository
-2. Run `npm install`
-3. Run `npm run dev`
+## Getting Started
+
+### Prerequisites
+- Node.js (v14.0.0 or higher)
+- npm (v6.0.0 or higher)
+
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/react-focus-timer.git
+   ```
+2. Navigate to project directory:
+   ```bash
+   cd react-focus-timer
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start development server:
+   ```bash
+   npm run dev
+   ```
+5. Open `http://localhost:5173` in your browser
+
+## Key Features in Development
+- Achievement system
+- Enhanced statistics dashboard
+- Custom timer presets
+- Sound notifications
 
 ## Structure
 ```
