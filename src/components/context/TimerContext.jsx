@@ -2,9 +2,9 @@ import { createContext, useEffect, useState, useCallback } from "react";
 import { useTimerLogic } from "../../hooks/useTimerLogic";
 import { useBreaks } from "../../hooks/useBreaks";
 import { useSessions } from "../../hooks/useSessions";
-import { toast } from "react-toastify";
 import { getAchievements, checkAchievements } from "../../utils/achievements";
 import { saveAchievements, loadAchievements, saveSettings, loadSettings } from "../../utils/storage";
+import { showToast } from "../../utils/notifications";
 import PropTypes from "prop-types";
 
 export const TimerContext = createContext();
@@ -155,7 +155,7 @@ export const TimerProvider = ({ children }) => {
           saveAchievements(updatedAchievements);
         }
         
-        toast.success("Pomodoro completed! Take a break! ☕");
+        showToast.success("Pomodoro completed! Take a break! ☕");
       } else {
         // End the break
         endBreak();
@@ -170,7 +170,7 @@ export const TimerProvider = ({ children }) => {
         setTimeLeft(duration);
         
         // Prepare for the next work session
-        toast.info("Break finished! Ready to focus again? 🚀");
+        showToast.info("Break finished! Ready to focus again? 🚀");
       }
     }
   }, [timeLeft, isRunning, timerMode, stopTimer, endSession, startBreak, endBreak, 

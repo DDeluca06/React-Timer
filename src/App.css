@@ -156,7 +156,7 @@ button.reset {
 }
 
 .session-history li {
-  background: #f0f0f0;
+  background: var(--card-background);
   padding: 10px;
   border-radius: 4px;
   margin-bottom: 10px;

@@ -1,4 +1,4 @@
-import { toast } from "react-toastify";
+import { showToast } from "./notifications";
 import { achievementsData } from "../data/achievements";
 
 export const getAchievements = (savedAchievements) => {
@@ -15,7 +15,7 @@ export const checkAchievements = (achievements, completedSessions, currentStreak
     const isUnlocked = achievement.unlocked || achievement.condition(completedSessions, currentStreak);
     if (isUnlocked && !achievement.unlocked) {
         console.log(`Achievement Unlocked: ${achievement.name}`);
-      toast.success(`Achievement Unlocked: ${achievement.name}`);
+      showToast.success(`Achievement Unlocked: ${achievement.name}`);
     }
     return { ...achievement, unlocked: isUnlocked };
   });

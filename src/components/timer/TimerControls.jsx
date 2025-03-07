@@ -1,7 +1,7 @@
 import Button from '../common/Button';
-import { toast } from 'react-toastify';
 import { useRef, useContext, useState, useEffect } from 'react';
 import { TimerContext } from '../context/TimerContext';
+import { showToast } from '../../utils/notifications';
 
 const TimerControls = () => {
   const { 
@@ -31,7 +31,6 @@ const TimerControls = () => {
     if (!isRunning) {
       // Starting or resuming the timer
       if (!hasStarted.current) {
-        toast.success('Session started!');
         hasStarted.current = true;
       }
       
@@ -47,20 +46,20 @@ const TimerControls = () => {
       if (isPaused) {
         // Resuming
         if (timerMode === 'pomodoro') {
-          toast.info('Focus time resumed');
+          showToast.info('Focus time resumed');
         } else if (timerMode === 'shortBreak') {
-          toast.info('Short break resumed');
+          showToast.info('Short break resumed');
         } else if (timerMode === 'longBreak') {
-          toast.info('Long break resumed');
+          showToast.info('Long break resumed');
         }
       } else {
         // Starting fresh
         if (timerMode === 'pomodoro') {
-          toast.info('Focus time started');
+          showToast.info('Focus time started');
         } else if (timerMode === 'shortBreak') {
-          toast.info('Short break started');
+          showToast.info('Short break started');
         } else if (timerMode === 'longBreak') {
-          toast.info('Long break started');
+          showToast.info('Long break started');
         }
       }
     } else {
@@ -74,9 +73,9 @@ const TimerControls = () => {
       
       // Show appropriate toast message
       if (timerMode === 'pomodoro') {
-        toast.info('Focus time paused');
+        showToast.info('Focus time paused');
       } else {
-        toast.info('Break paused');
+        showToast.info('Break paused');
       }
     }
   };
@@ -84,7 +83,7 @@ const TimerControls = () => {
   // Handle reset button click
   const handleReset = () => {
     resetTimer();
-    toast.info('Timer reset');
+    showToast.info('Timer reset');
   };
 
   return (
