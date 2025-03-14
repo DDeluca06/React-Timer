@@ -1,14 +1,17 @@
-import { loadAchievements } from "../utils/Storage";
+import { useContext } from "react";
+import { TimerContext } from "../context/TimerContext";
 import AchievementsList from "../components/timer/AchievementsList";
 import Navbar from '../components/ui/NavBar';
 
 const AchievementsPage = () => {
-  const achievements = loadAchievements() || []; 
+  
   return (
     <div>
-    <Navbar />
-      <h1>Your Achievements</h1>
-      <AchievementsList achievements={achievements} />
+      <Navbar />
+      <h1 className="text-3xl font-bold text-center my-8 text-light-text dark:text-dark-text">
+        Your Achievements
+      </h1>
+      <AchievementsList />
     </div>
   );
 };

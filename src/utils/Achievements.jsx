@@ -2,10 +2,15 @@ import { showToast } from "./Notifications";
 import { achievementsData } from "../data/achievements";
 
 export const getAchievements = (savedAchievements) => {
+  // If no saved achievements, return the default data
+  if (!savedAchievements) {
+    return achievementsData;
+  }
+
+  // Merge saved unlock status with the full achievement data
   return achievementsData.map((achievement) => ({
     ...achievement,
-    // Merge with saved data (if any)
-    unlocked: savedAchievements?.find(a => a.id === achievement.id)?.unlocked || false,
+    unlocked: savedAchievements.find(a => a.id === achievement.id)?.unlocked || false,
   }));
 };
 

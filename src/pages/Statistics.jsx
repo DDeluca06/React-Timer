@@ -68,7 +68,7 @@ function Stats() {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
         <div className="stat-card bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
           <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Current Streak</h2>
-          <p className="text-2xl font-bold text-blue-600">{streak} days</p>
+          <p className="text-2xl font-bold text-blue-600">{streak} day{streak === 1 ? '' : 's'}</p>
         </div>
         <div className="stat-card bg-white dark:bg-gray-800 p-3 rounded-lg shadow">
           <h2 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Break Count</h2>
