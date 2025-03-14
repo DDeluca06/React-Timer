@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { TimerContext } from "../context/TimerContext";
 import AchievementsList from "../components/timer/AchievementsList";
 import Navbar from '../components/ui/NavBar';
 
