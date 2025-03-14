@@ -62,6 +62,25 @@ export const TimerProvider = ({ children }) => {
   const [timerMode, setTimerMode] = useState(() => loadTimerMode());
   const [completedPomodoros, setCompletedPomodoros] = useState(0);
 
+  // Add update functions for demo purposes
+  const updateSessions = useCallback((newSessions) => {
+    // Validate sessions structure
+    if (!Array.isArray(newSessions)) {
+      throw new Error('Sessions must be an array');
+    }
+    // Update sessions state
+    sessions.splice(0, sessions.length, ...newSessions);
+  }, [sessions]);
+
+  const updateBreaks = useCallback((newBreaks) => {
+    // Validate breaks structure
+    if (!Array.isArray(newBreaks)) {
+      throw new Error('Breaks must be an array');
+    }
+    // Update breaks state
+    breaks.splice(0, breaks.length, ...newBreaks);
+  }, [breaks]);
+
   // Update settings when changed
   const updateSettings = useCallback((newSettings) => {
     setSettings((prev) => {
@@ -236,7 +255,9 @@ export const TimerProvider = ({ children }) => {
         timerMode,
         switchTimerMode,
         completedPomodoros,
-        updateTimerBasedOnMode
+        updateTimerBasedOnMode,
+        updateSessions,
+        updateBreaks
       }}
     >
       {children}
