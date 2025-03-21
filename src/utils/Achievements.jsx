@@ -1,5 +1,5 @@
-import { showToast } from "./Notifications";
-import { achievementsData } from "../data/achievements";
+import { showToast } from "./Notifications.jsx";
+import { achievementsData } from "../data/achievements.js";
 
 export const getAchievements = (savedAchievements) => {
   // If no saved achievements, return the default data
