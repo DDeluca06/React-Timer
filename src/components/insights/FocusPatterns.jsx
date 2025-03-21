@@ -15,7 +15,7 @@ import { format, getHours, getDay } from 'date-fns';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const FocusPatterns = () => {
-  const { sessions, breaks } = useContext(TimerContext);
+  const { sessions } = useContext(TimerContext);
 
   /**
    * Analyze productivity patterns by hour of day

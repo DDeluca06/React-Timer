@@ -1,17 +1,7 @@
-/**
- * ProductivityScore Component
- * 
- * Calculates and displays a productivity score based on multiple factors:
- * - Session completion rate
- * - Break adherence
- * - Focus time consistency
- * - Daily goal achievement
- */
-
 import React, { useMemo } from 'react';
 import { useContext } from 'react';
 import { TimerContext } from '../../context/TimerContext';
-import { format, differenceInMinutes, isSameDay } from 'date-fns';
+import { format } from 'date-fns';
 
 const ProductivityScore = () => {
   const { sessions, breaks, settings } = useContext(TimerContext);

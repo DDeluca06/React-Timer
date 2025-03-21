@@ -11,7 +11,7 @@
 import React, { useState, useMemo } from 'react';
 import { useContext } from 'react';
 import { TimerContext } from '../../context/TimerContext';
-import { format, startOfWeek, endOfWeek, eachDayOfInterval, subWeeks } from 'date-fns';
+import { format, startOfWeek, eachDayOfInterval, subWeeks } from 'date-fns';
 import { 
   ResponsiveContainer, 
   ComposedChart, 

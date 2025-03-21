@@ -11,7 +11,7 @@
 import React, { useMemo } from 'react';
 import { useContext } from 'react';
 import { TimerContext } from '../../context/TimerContext';
-import { format, getHours, differenceInMinutes } from 'date-fns';
+import { format, getHours } from 'date-fns';
 
 const RecommendationEngine = () => {
   const { sessions, breaks, settings } = useContext(TimerContext);
