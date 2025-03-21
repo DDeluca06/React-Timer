@@ -2,10 +2,10 @@ import { createContext, useEffect, useState, useCallback } from "react";
 import { useTimerLogic } from "../hooks/useTimerLogic";
 import { useBreaks } from "../hooks/useBreaks";
 import { useSessions } from "../hooks/useSessions";
-import { getAchievements, checkAchievements } from "../utils/achievements";
-import { saveAchievements, loadAchievements, saveSettings, loadSettings } from "../utils/storage";
-import { showToast } from "../utils/notifications";
-import { playTimerComplete } from "../utils/sound";
+import { getAchievements, checkAchievements } from "../utils/Achievements";
+import { saveAchievements, loadAchievements, saveSettings, loadSettings } from "../utils/Storage";
+import { showToast } from "../utils/Notifications";
+import { playTimerComplete } from "../utils/Sound";
 import PropTypes from "prop-types";
 
 export const TimerContext = createContext();

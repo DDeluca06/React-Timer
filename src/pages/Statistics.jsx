@@ -4,7 +4,7 @@ import Statistics from '../components/Statistics';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Stats() {
+function StatisticsPage() {
   return (
     <div className="page-container max-w-7xl mx-auto">
       <NavBar />
@@ -14,4 +14,4 @@ function Stats() {
   );
 }
 
-export default Stats;
+export default StatisticsPage;
