@@ -66,8 +66,11 @@ const TimerControls = () => {
       // Pausing the timer
       stopTimer();
       
-      // If we're in pomodoro mode, end the session
-      if (timerMode === 'pomodoro') {
+      // Store whether this is a true stop (timer reached 0) or just a pause
+      const isJustPausing = timeLeft > 0 && timeLeft < totalTime;
+      
+      // If we're in pomodoro mode and this is a true stop (not just a pause), end the session
+      if (timerMode === 'pomodoro' && !isJustPausing) {
         endSession();
       }
       

@@ -137,11 +137,15 @@ export const TimerProvider = ({ children }) => {
       console.log(`Setting timer for ${mode} mode: ${duration} seconds`);
       updateTotalTime(duration);
 
-      // Only reset timeLeft if we're not currently running
-      // This ensures we don't reset when pausing and switching modes
-      setTimeLeft(duration);
+      // Check if we might be in a paused state
+      const isPossiblyPaused = timeLeft < totalTime && timeLeft > 0;
+      
+      // Only reset timeLeft if we're not paused or running
+      if (!isRunning && !isPossiblyPaused) {
+        setTimeLeft(duration);
+      }
     }
-  }, [isRunning, stopTimer, settings.timerPresets, updateTotalTime, setTimeLeft]);
+  }, [isRunning, stopTimer, settings.timerPresets, updateTotalTime, setTimeLeft, timeLeft, totalTime]);
 
   // Timer Completion
   useEffect(() => {
@@ -216,8 +220,10 @@ export const TimerProvider = ({ children }) => {
       console.log(`Initializing timer for ${currentMode} mode: ${duration} seconds`);
       updateTotalTime(duration);
 
-      // Only reset timeLeft if the timer is not running
-      if (!isRunning) {
+      // Only reset timeLeft if the timer is not running and we're not in a paused state
+      // Check if we might be in a paused state based on timeLeft being less than totalTime
+      const isPossiblyPaused = timeLeft < totalTime;
+      if (!isRunning && !isPossiblyPaused) {
         setTimeLeft(duration);
       }
     }

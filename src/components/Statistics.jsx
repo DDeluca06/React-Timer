@@ -44,7 +44,7 @@ const Statistics = () => {
               <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[300px] overflow-auto">
                 <AdvancedDashboard />
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[180px]">
+              <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[225px]">
                 <FilterControls 
                   dateRange={dateRange}
                   onDateRangeChange={setDateRange}
@@ -53,7 +53,7 @@ const Statistics = () => {
                 />
               </div>
             </div>
-            <div className="mt-8 bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[400px] overflow-hidden">
+            <div className="mt-8 bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[420px] overflow-hidden">
               <ComparisonChart period={comparisonPeriod} data={comparisonData} />
             </div>
           </section>
@@ -63,7 +63,7 @@ const Statistics = () => {
           <section className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl border-2 border-gray-200 dark:border-gray-700">
             <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 border-b-2 border-gray-100 dark:border-gray-700 pb-4 mb-6">Productivity Insights</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[300px] overflow-auto">
+              <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[320px] overflow-auto">
                 <ProductivityScore />
               </div>
               <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[400px] overflow-auto">
