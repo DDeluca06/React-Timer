@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useTheme } from '../../context/ThemeContext';
 
 // Defining our Button component and determining variance, size, etc. 
@@ -89,25 +88,6 @@ const Button = ({
             {children}
         </button>
     );
-};
-
-// Prop definitions, these are here to ensure that the props are passed in correctly
-// This is a good practice to ensure that the component is used correctly and we drop any unexpected datatypes.
-Button.propTypes = {
-    children: PropTypes.node.isRequired,
-    variant: PropTypes.oneOf(['primary', 'secondary', 'danger']),
-    size: PropTypes.oneOf(['small', 'medium', 'large']),
-    className: PropTypes.string,
-    disabled: PropTypes.bool,
-    onClick: PropTypes.func,
-};
-
-// Defaults
-Button.defaultProps = {
-    variant: 'primary',
-    size: 'medium',
-    className: '',
-    disabled: false,
 };
 
 export default Button;

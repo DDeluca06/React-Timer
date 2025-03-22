@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const ComparisonChart = ({ data, period }) => {
@@ -97,17 +96,6 @@ const ComparisonChart = ({ data, period }) => {
       </div>
     </div>
   );
-};
-
-// PropTypes so the linter stops yelling at me
-ComparisonChart.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({
-    date: PropTypes.string.isRequired,
-    totalTime: PropTypes.number.isRequired,
-    averageTime: PropTypes.number.isRequired,
-    sessions: PropTypes.number.isRequired
-  })).isRequired,
-  period: PropTypes.oneOf(['day', 'week', 'month']).isRequired
 };
 
 export default ComparisonChart; 

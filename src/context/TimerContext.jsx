@@ -3,10 +3,9 @@ import { useTimerLogic } from "../hooks/useTimerLogic";
 import { useBreaks } from "../hooks/useBreaks";
 import { useSessions } from "../hooks/useSessions";
 import { getAchievements, checkAchievements } from "../utils/Achievements";
-import { saveAchievements, loadAchievements, saveSettings, loadSettings } from "../utils/Storage";
+import { saveAchievements, loadAchievements, saveSettings, loadSettings } from "../utils/Storage.jsx";
 import { showToast } from "../utils/Notifications";
 import { playTimerComplete } from "../utils/Sound";
-import PropTypes from "prop-types";
 
 export const TimerContext = createContext();
 
@@ -263,9 +262,4 @@ export const TimerProvider = ({ children }) => {
       {children}
     </TimerContext.Provider>
   );
-};
-
-// Add prop validation
-TimerProvider.propTypes = {
-  children: PropTypes.node.isRequired
 };
