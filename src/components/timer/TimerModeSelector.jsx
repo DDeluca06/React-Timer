@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { TimerContext } from '../../context/TimerContext';
-import PropTypes from 'prop-types';
 
 const TimerModeSelector = () => {
   const { timerMode, switchTimerMode, isRunning } = useContext(TimerContext);
@@ -57,15 +56,6 @@ const ModeButton = ({ mode, currentMode, onClick, children }) => {
       {children}
     </button>
   );
-};
-
-// Prop types for the ModeButton component; ESLint is a pain. Please, make it go away.
-// We don't *technically* need these, since we're not using TypeScript. 
-ModeButton.propTypes = {
-  mode: PropTypes.string.isRequired,
-  currentMode: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired
 };
 
 export default TimerModeSelector; 

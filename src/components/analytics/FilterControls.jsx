@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -97,15 +96,5 @@ const FilterControls = ({ dateRange, onDateRangeChange, comparisonPeriod, onComp
   );
 };
 
-// PropTypes so the linter stops yelling at me
-FilterControls.propTypes = {
-  dateRange: PropTypes.shape({
-    start: PropTypes.instanceOf(Date),
-    end: PropTypes.instanceOf(Date)
-  }).isRequired,
-  onDateRangeChange: PropTypes.func.isRequired,
-  comparisonPeriod: PropTypes.oneOf(['day', 'week', 'month']).isRequired,
-  onComparisonPeriodChange: PropTypes.func.isRequired
-};
 
 export default FilterControls; 

@@ -6,7 +6,6 @@ const AchievementsList = () => {
 
   // Group achievements by category
   const groupedAchievements = useMemo(() => {
-    console.log('Achievements:', achievements); // Debug log
     return achievements.reduce((acc, achievement) => {
       const category = achievement.category || 'Uncategorized';
       if (!acc[category]) {
