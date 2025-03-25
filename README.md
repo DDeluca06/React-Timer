@@ -12,6 +12,10 @@ A modern, feature-rich Pomodoro timer application built with React. This applica
 - Dark/Light theme support
 - Persistent settings and session data
 - Mobile-responsive design
+- Achievement system
+- Enhanced statistics dashboard
+- Custom timer presets
+- Sound notifications
 
 ## Core Technologies
 - React 18
@@ -45,12 +49,6 @@ A modern, feature-rich Pomodoro timer application built with React. This applica
    npm run dev
    ```
 5. Open `http://localhost:5173` in your browser
-
-## Key Features in Development
-- Achievement system
-- Enhanced statistics dashboard
-- Custom timer presets
-- Sound notifications
 
 ## Structure
 ```

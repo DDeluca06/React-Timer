@@ -177,7 +177,7 @@ export const TimerProvider = ({ children }) => {
         startBreak();
 
         // Check achievements after a session is completed
-        const updatedAchievements = checkAchievements(achievements, sessions.length, streak);
+        const updatedAchievements = checkAchievements(achievements, sessions, streak);
         if (JSON.stringify(updatedAchievements) !== JSON.stringify(achievements)) {
           setAchievements(updatedAchievements);
           saveAchievements(updatedAchievements);
@@ -206,7 +206,7 @@ export const TimerProvider = ({ children }) => {
     }
   }, [timeLeft, isRunning, timerMode, stopTimer, endSession, startBreak, endBreak,
     settings.timerPresets, updateTotalTime, setTimeLeft, completedPomodoros,
-    achievements, sessions.length, streak]);
+    achievements, sessions, streak]);
 
   // Initialize timer based on mode when component mounts or when settings change
   useEffect(() => {

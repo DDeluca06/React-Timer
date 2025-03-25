@@ -85,6 +85,7 @@ export const useSessions = () => {
             ...currentSession,
             endTime: Date.now(),
             duration: Math.floor((Date.now() - currentSession.startTime) / 1000), // Duration in seconds
+            completed: true  // Mark the session as completed
           };
       
           // Update sessions
