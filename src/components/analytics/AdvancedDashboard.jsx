@@ -92,58 +92,59 @@ const AdvancedDashboard = () => {
 
   return (
     <div className="advanced-dashboard space-y-6">
-      <div className="flex justify-between items-center">
-        <h2 className="text-xl font-bold">Advanced Analytics</h2>
+      <div className="flex justify-between items-center mb-4">
         <div className="flex gap-2">
           <button
             onClick={() => handleExport('csv')}
-            className="px-3 py-1 bg-blue-600 text-white rounded-md text-sm"
+            className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm transition-colors"
           >
             Export CSV
           </button>
           <button
             onClick={() => handleExport('json')}
-            className="px-3 py-1 bg-green-600 text-white rounded-md text-sm"
+            className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm transition-colors"
           >
             Export JSON
           </button>
         </div>
       </div>
 
-      <FilterControls
-        dateRange={dateRange}
-        onDateRangeChange={setDateRange}
-        comparisonPeriod={comparisonPeriod}
-        onComparisonPeriodChange={setComparisonPeriod}
-      />
-
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        <div className="stat-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Average Session Duration</h3>
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="stat-card bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Average Session</h3>
           <p className="text-2xl font-bold text-blue-600">{Math.round(metrics.averageSessionDuration)} min</p>
         </div>
-        <div className="stat-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Total Focus Time</h3>
+        <div className="stat-card bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Total Focus</h3>
           <p className="text-2xl font-bold text-green-600">{Math.round(metrics.totalFocusTime)} min</p>
         </div>
-        <div className="stat-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Sessions per Day</h3>
+        <div className="stat-card bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Daily Sessions</h3>
           <p className="text-2xl font-bold text-purple-600">{Math.round(metrics.sessionsPerDay * 10) / 10}</p>
         </div>
-        <div className="stat-card bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Completion Rate</h3>
+        <div className="stat-card bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg">
+          <h3 className="text-sm font-semibold text-gray-600 dark:text-gray-300">Completion</h3>
           <p className="text-2xl font-bold text-orange-600">{Math.round(metrics.completionRate)}%</p>
         </div>
       </div>
 
-      <div className="comparison-chart bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
-        <h3 className="text-sm font-semibold mb-4">Focus Time Comparison</h3>
-        <div className="h-64">
+      <div className="comparison-chart bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg">
+        <h3 className="text-sm font-semibold mb-4 text-gray-600 dark:text-gray-300">Focus Time Trends</h3>
+        <div className="h-[300px]">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={comparisonData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" tick={{ fontSize: 11 }} />
-              <YAxis tick={{ fontSize: 11 }} />
+              <CartesianGrid strokeDasharray="3 3" opacity={0.5} />
+              <XAxis 
+                dataKey="date" 
+                tick={{ fontSize: 11 }}
+                stroke="currentColor"
+                opacity={0.5}
+              />
+              <YAxis 
+                tick={{ fontSize: 11 }}
+                stroke="currentColor"
+                opacity={0.5}
+              />
               <Tooltip 
                 content={({ active, payload, label }) => {
                   if (active && payload && payload.length) {
@@ -159,14 +160,24 @@ const AdvancedDashboard = () => {
                 }}
               />
               <Legend wrapperStyle={{ fontSize: '11px' }} />
-              <Line type="monotone" dataKey="totalTime" stroke="#8884d8" name="Total Time (min)" />
-              <Line type="monotone" dataKey="averageTime" stroke="#82ca9d" name="Avg Time (min)" />
+              <Line 
+                type="monotone" 
+                dataKey="totalTime" 
+                stroke="#8884d8" 
+                name="Total Time (min)"
+                strokeWidth={2}
+              />
+              <Line 
+                type="monotone" 
+                dataKey="averageTime" 
+                stroke="#82ca9d" 
+                name="Avg Time (min)"
+                strokeWidth={2}
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>
       </div>
-
-      <ComparisonChart data={comparisonData} period={comparisonPeriod} />
     </div>
   );
 };

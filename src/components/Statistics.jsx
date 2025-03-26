@@ -35,61 +35,87 @@ const Statistics = () => {
   }));
 
   const renderAdvancedContent = () => {
+    const commonContainerClasses = "bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 h-[800px] overflow-hidden flex flex-col relative";
+    const commonHeaderClasses = "text-xl font-bold text-gray-800 dark:text-gray-100 pb-4 border-b border-gray-200 dark:border-gray-700 sticky top-0 bg-white dark:bg-gray-800 z-10";
+    const commonContentClasses = "flex-1 overflow-y-auto space-y-6 py-4 -mx-6 px-6";
+    const commonCardClasses = "bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg";
+    const gridCardClasses = commonCardClasses + " h-[400px] overflow-y-auto";
+    const fullCardClasses = commonCardClasses + " h-[600px] overflow-y-auto";
+
     switch (activeTab) {
       case 'analytics':
         return (
-          <section className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl border-2 border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 border-b-2 border-gray-100 dark:border-gray-700 pb-4 mb-6">Advanced Analytics</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[300px] overflow-auto">
-                <AdvancedDashboard />
+          <section className={commonContainerClasses}>
+            <h2 className={commonHeaderClasses}>Advanced Analytics</h2>
+            <div className={commonContentClasses}>
+              <div className="grid grid-cols-1 gap-6">
+                <div className={commonCardClasses + " h-auto"}>
+                  <FilterControls 
+                    dateRange={dateRange}
+                    onDateRangeChange={setDateRange}
+                    comparisonPeriod={comparisonPeriod}
+                    onComparisonPeriodChange={setComparisonPeriod}
+                  />
+                </div>
+                <div className={fullCardClasses}>
+                  <AdvancedDashboard />
+                </div>
+                <div className={fullCardClasses}>
+                  <ComparisonChart period={comparisonPeriod} data={comparisonData} />
+                </div>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[225px]">
-                <FilterControls 
-                  dateRange={dateRange}
-                  onDateRangeChange={setDateRange}
-                  comparisonPeriod={comparisonPeriod}
-                  onComparisonPeriodChange={setComparisonPeriod}
-                />
-              </div>
-            </div>
-            <div className="mt-8 bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[420px] overflow-hidden">
-              <ComparisonChart period={comparisonPeriod} data={comparisonData} />
             </div>
           </section>
         );
       case 'insights':
         return (
-          <section className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl border-2 border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 border-b-2 border-gray-100 dark:border-gray-700 pb-4 mb-6">Productivity Insights</h2>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[320px] overflow-auto">
-                <ProductivityScore />
+          <section className={commonContainerClasses}>
+            <h2 className={commonHeaderClasses}>Productivity Insights</h2>
+            <div className={commonContentClasses}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className={gridCardClasses}
+                style={{
+                  height: '80%',
+                  overflowY: 'auto'
+                }}>
+                  <ProductivityScore />
+                </div>
+                <div className={gridCardClasses}>
+                  <FocusPatterns />
+                </div>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[400px] overflow-auto">
-                <FocusPatterns />
+              <div className={gridCardClasses}
+              style={{
+                height: '40%',
+                overflowY: 'auto'
+              }}>
+                <RecommendationEngine />
               </div>
-            </div>
-            <div className="mt-8 bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg">
-              <RecommendationEngine />
             </div>
           </section>
         );
       case 'goals':
         return (
-          <section className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl border-2 border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 border-b-2 border-gray-100 dark:border-gray-700 pb-4 mb-6">Goal Tracking</h2>
-            <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg h-[500px] overflow-auto">
-              <GoalTracking />
+          <section className={commonContainerClasses}>
+            <h2 className={commonHeaderClasses}>Goal Tracking</h2>
+            <div className={commonContentClasses}>
+              <div className={fullCardClasses}
+              style={{
+                height: '70%'
+              }}>
+                <GoalTracking />
+              </div>
             </div>
           </section>
         );
       case 'reports':
         return (
-          <section className="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl border-2 border-gray-200 dark:border-gray-700">
-            <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100 border-b-2 border-gray-100 dark:border-gray-700 pb-4 mb-6">Reports</h2>
-            <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-lg shadow-lg">
-              <ReportGeneration />
+          <section className={commonContainerClasses}>
+            <h2 className={commonHeaderClasses}>Reports</h2>
+            <div className={commonContentClasses}>
+              <div className={fullCardClasses}>
+                <ReportGeneration />
+              </div>
             </div>
           </section>
         );
