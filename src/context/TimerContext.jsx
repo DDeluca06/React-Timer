@@ -6,6 +6,7 @@ import { getAchievements, checkAchievements } from "../utils/Achievements";
 import { saveAchievements, loadAchievements, saveSettings, loadSettings } from "../utils/Storage.jsx";
 import { showToast } from "../utils/Notifications";
 import { playTimerComplete } from "../utils/Sound";
+import { achievementsData } from '../data/achievements'; // Import the data
 
 export const TimerContext = createContext();
 
@@ -37,10 +38,7 @@ export const TimerProvider = ({ children }) => {
   const { sessions, streak, startSession, endSession, isSessionActive } = useSessions();
 
   // Loading achievements from localStorage or setting them to default
-  const [achievements, setAchievements] = useState(() => {
-    const saved = loadAchievements(); // Only contains { id, unlocked }
-    return getAchievements(saved); // Merge with fresh data (including conditions)
-  });
+  const [achievements, setAchievements] = useState(achievementsData); // Initialize with your data
 
   // Settings
   const [settings, setSettings] = useState(() => loadSettings() || {

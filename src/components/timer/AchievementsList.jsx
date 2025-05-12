@@ -6,6 +6,10 @@ const AchievementsList = () => {
 
   // Group achievements by category
   const groupedAchievements = useMemo(() => {
+    if (!Array.isArray(achievements)) {
+      console.error("Achievements is not an array:", achievements);
+      return {};
+    }
     return achievements.reduce((acc, achievement) => {
       const category = achievement.category || 'Uncategorized';
       if (!acc[category]) {
